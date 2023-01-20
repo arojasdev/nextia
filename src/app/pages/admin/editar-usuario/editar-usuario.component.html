@@ -1,0 +1,35 @@
+<mat-card>
+    <h1>Editar usuario</h1>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form *ngIf = "usuario" (submit) = "actualizar()">
+
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input
+            [(ngModel)] = "usuario.username"
+            type="text"
+            name="username"
+            placeholder="Ingrese nuevo usuario"
+            required
+            matInput>
+          </mat-form-field>
+
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input
+            [(ngModel)] = "usuario.password"
+            type="password"
+            name="password"
+            placeholder="Ingrese nueva contraseña"
+            matInput>
+          </mat-form-field>
+  
+          <div class="container text-center">
+            <button mat-raised-button color="primary">Editar</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </mat-card>

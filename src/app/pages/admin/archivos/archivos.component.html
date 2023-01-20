@@ -1,0 +1,36 @@
+<h1>Panel de administracion de archivos</h1>
+<div id="wrap">
+    <mat-card class="mt10">
+        <mat-card-content>
+            <mat-card-actions>
+              <button id="selectButton" mat-flat-button mat-raised-button color="primary" (click)="fileInput.click()"           class="ml20">Seleccionar archivos</button>
+
+              <input #fileInput type="file" hidden multiple (change)="selectFiles($event)" />
+                <span class="ml20" *ngIf="imageName">{{imageName}}</span>
+                <span class="ml20" *ngIf="!imageName && selectedFiles">1 archivo</span>
+
+              <button id="uploadButton" mat-flat-button color="accent" class="ml10"mat-raised-button *ngIf="selectedFiles" [disabled]="!selectedFiles" (click)="uploadFiles()">
+                Subir Archivos
+            </button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
+
+    <br><br><br>
+    <div id="box4">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Lista de Archivos</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <ul>
+                    <li *ngFor="let file of fileInfos | async">
+                        <a>{{file.nombre}}</a>
+                        <mat-icon (click)="deleteFile(file.nombre)">delete</mat-icon>
+                    </li>
+                </ul>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>

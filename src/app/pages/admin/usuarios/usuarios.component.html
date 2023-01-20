@@ -1,0 +1,19 @@
+<h1>Panel de administracion de usuarios</h1>
+<mat-card class="mt10" *ngFor = "let usuario of usuarios">
+    <mat-card-header>
+      <div mat-card-avatar class="icono-usuario"></div>
+        <mat-card-title>
+          {{ usuario.username }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ usuario.authorities[0].authority
+          }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-actions>
+        <button [routerLink] = "'/admin/editar-usuario/'+usuario.idUsuario" mat-flat-button color="primary" class="ml20">Editar</button>
+        <button mat-flat-button color="warn" class="ml10" (click) = "eliminarUsuario(usuario.idUsuario)">Eliminar</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
